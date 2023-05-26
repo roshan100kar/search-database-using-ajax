@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+    function init() {
+       var theObject = new XMLHttpRequest();
+
+    //    theObject.open("GET", "js.php", true);
+    theObject.open("POST", "js.php", true);
+    theObject.setRequestHeader("Content-type", "application/x-www-form-urlencode");
+
+       theObject.onreadystatechange = function() {
+        if(theObject.readyState == 4 && theObject.status == 200) {
+            document.getElementById("container").innerHTML = theObject.responseText;
+        }
+        
+       }
+       theObject.send("username=roshan&password=1234");
+    }
+
+    </script>
+    <button onclick="init()">Send Info</button>
+    <div id="container">
+
+
+    </div>
+</body>
+</html>
